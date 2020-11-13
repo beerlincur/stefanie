@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 #|------------------------ IMPORTS -------------------|
-import os, re, io, logging, asyncio
+import os, re, io, logging, asyncio, shutil
 from time import gmtime, strftime
 from aiogram import Bot, Dispatcher, executor, types
 from aiogram.dispatcher.storage import FSMContext
@@ -22,6 +22,7 @@ from weather import get_weather, get_my_forecast, get_my_weather
 from covid19_parser import get_world_corona_stats, get_russia_corona_stats
 from states import JobForm, GoogleForm, WikiForm, WethaForm, SetCityForm, CooperationForm
 from middleware import remember_user_start
+from instagram import download_insta_post
 
 #|---------------------- CODE ------------------------|
 
@@ -283,6 +284,20 @@ async def my_forecast_handler(message: types.Message):
 async def my_forecast_handler(message: types.Message):
     """Отправляет информацию о коронавирусе"""
     await message.answer("Где именно?", reply_markup=KEYBOARD_CORONA)
+
+# ================================================================================================== ИНСТА
+@dp.message_handler(lambda message: message.text.startswith("https://www.instagram.com/p/")) # инста 
+async def insta_downloader_handler(message: types.Message):
+    """Скачивает содержимое поста интаграм и отправляет юзеру"""
+    photos = download_insta_post(message.text)
+    for file in photos:
+        with open(file, 'rb') as file:
+            await bot.send_document(message.chat.id, file, disable_notification=True)
+        
+    
+    path = os.path.join(os.path.abspath(os.path.dirname(__file__)), "post")
+    shutil.rmtree(path)
+
 
 # ================================================================================================== ГЕОЛОКАЦИЯ
 @dp.message_handler(content_types=types.ContentType.LOCATION, state=SetCityForm.city)
