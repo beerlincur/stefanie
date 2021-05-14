@@ -30,7 +30,7 @@ logging.basicConfig(level=logging.INFO)
 
 loop = asyncio.get_event_loop()
 
-bot = Bot(token=TOKEN, proxy=PROXIE_URL, proxy_auth=PROXIE_AUTH)
+bot = Bot(token=TOKEN)
 
 storage = MemoryStorage()
 
