@@ -148,3 +148,10 @@ config.ini
 
 # temporary files
 *.swp
+/.idea/.gitignore
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/inspectionProfiles/profiles_settings.xml
+/.idea/inspectionProfiles/Project_Default.xml
+/.idea/stefanie.iml
+/.idea/vcs.xml
