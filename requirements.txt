@@ -1,5 +1,5 @@
 aiogram==2.5.2
-aiohttp==3.6.2
+aiohttp~=3.8.0
 async-timeout==3.0.1
 attrs==19.3.0
 beautifulsoup4==4.8.1
@@ -34,7 +34,7 @@ pyasn1-modules==0.2.7
 pyodbc==4.0.27
 pyowm==2.10.0
 pytz==2019.3
-requests==2.22.0
+requests~=2.23.0
 rsa==4.0
 six==1.12.0
 soupsieve==1.9.4
@@ -44,4 +44,5 @@ virtualenv==16.7.4
 virtualenv-clone==0.5.3
 Wikipedia-API==0.5.3
 yarl==1.4.2
-covid-data-api==1.5 
+covid-data-api==1.5
+instaloader~=4.8.1
