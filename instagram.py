@@ -12,6 +12,7 @@ def download_insta_post(url: str) -> List[str]:
     shortcode = get_shortcode_from_url(url)
 
     loader = Instaloader()
+    loader.load_session_from_file("beerlincur")
 
     post = Post.from_shortcode(loader.context, shortcode)
 
