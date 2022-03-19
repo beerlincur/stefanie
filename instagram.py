@@ -21,6 +21,7 @@ def download_insta_post(url: str) -> List[str]:
     for t in os.walk("post"):
         files = t[2]
         for f in files:
+            print(f)
             if f.endswith(".jpg"):
                 photos.append("post/" + f)
 
